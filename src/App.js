@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Menu from './component/menu/index';
+import Appbar from './component/navBar/index';
+import Greeting from './component/cartWidget/index';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Esta llegando la mejor web para comprar birra!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          More info
-        </a>
-      </header>
+       </header>
+       <Appbar />
+<div className="containerGral">
+        <Menu
+        />
+       <Greeting
+            title={"Bienvenidos a CervezApp"} 
+            parrafo={"Navega nuestro menu de exclusivas cervezas"}
+                />
+       </div>
     </div>
   );
 }
