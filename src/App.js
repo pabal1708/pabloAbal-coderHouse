@@ -20,8 +20,7 @@ function App() {
   fetch('https://mocki.io/v1/f62be81d-c98d-432e-8f87-b85ea1ddf212')
   .then((response) => response.json())
   .then(data => setItems(data))
-  .then(console.log(items))
-
+//muestro la seccion y oculto Home
   setHomeVisible(false);
   setSectionVisible(true);
   }
@@ -42,13 +41,13 @@ function App() {
           </ListItemIcon>
           <Typography variant="inherit">Cervezas rubias</Typography>
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleClick}>
           <ListItemIcon>
           <Loger className="icon"/>
           </ListItemIcon>
           <Typography variant="inherit">Cervezas Stout</Typography>
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleClick}>
           <ListItemIcon>
           <Loger className="icon"/>
           </ListItemIcon>
@@ -56,7 +55,7 @@ function App() {
             Cervezas Rojas
           </Typography>
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleClick}>
           <ListItemIcon>
           <Loger className="icon"/>
           </ListItemIcon>
@@ -78,7 +77,6 @@ function App() {
                  <ProductView 
                items={items}
                /> 
-
                )
               }
           </div>

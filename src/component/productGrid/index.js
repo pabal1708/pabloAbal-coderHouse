@@ -4,9 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Button from '@material-ui/core/Button';
 import img from '../productGrid/botella.jpg';
 import { useState } from 'react';
+import Counter from '../counter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,17 +63,11 @@ export default function ComplexGrid({items}) {
               <Typography variant="subtitle1">{items.valor}</Typography>
             </Grid>
           </Grid>
+          
         </Grid>
-        <Grid item>
-              <Typography variant="subtitle1">Cantidad {unity}</Typography>
-              <Button onClick={restarCantidad} variant="outlined" size="small" className={classes.margin}>
-          -
-        </Button>
-        <Button onClick={sumarCantidad} variant="outlined" size="small" className={classes.margin}>
-          +
-        </Button>
-            </Grid>
+        <Counter />
       </Paper>
+     
     </div>
     ))
   );
