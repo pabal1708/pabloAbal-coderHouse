@@ -24,29 +24,32 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
   
-export default function  Counter () {
+export default function  Counter ({ stock }) {
     const classes = useStyles();
     const [unity, setUnity] = useState(0);
 
     function sumarCantidad(){
-      setUnity(unity + 1) 
+        if (stock > unity) {
+            setUnity(unity + 1) 
+        }
     }
+            
+    
     function restarCantidad(){
-    if (unity > 0) {
-        setUnity(unity - 1) 
-    }
-        
+        if (unity > 0) {
+            setUnity(unity - 1) 
+        }
     }
 
     return ( 
         <div>
-            <p>Unidades: {unity}</p>
+            <p>Unidades: {unity} Stock: {stock}</p>
             <Button onClick={restarCantidad} variant="outlined" size="small" className={classes.margin}>
         -
-      </Button>
-      <Button onClick={sumarCantidad} variant="outlined" size="small" className={classes.margin}>
+        </Button>
+        <Button onClick={(sumarCantidad)} variant="outlined" size="small" className={classes.margin}>
         +
-      </Button>
+        </Button>
         </div>
     );
 }

@@ -16,15 +16,19 @@ function App() {
   const [sectionVisible, setSectionVisible]=useState(false);
   const [items, setItems] = useState([]);
 
-  function handleClick(){
-  fetch('https://mocki.io/v1/f62be81d-c98d-432e-8f87-b85ea1ddf212')
+
+  function handleClick(section){
+  fetch('https://mocki.io/v1/f1a81799-29c2-4451-9978-67463d4f47bb')
   .then((response) => response.json())
-  .then(data => setItems(data))
-//muestro la seccion y oculto Home
+  .then(data => setItems(data.filter(element => element.tipo === section)))
+//muestro la seccion, oculto Home  y seteo identificador de seccion, por ahora solo funciona en rubia y stout
   setHomeVisible(false);
   setSectionVisible(true);
   }
+
+
   console.log(items);
+  console.log(items.filter(element => element.tipo === "rubia"));
 
   return (
     <div className="App">
@@ -35,13 +39,13 @@ function App() {
 <div className="menu-container">
     <Paper className="pepito">
       <MenuList>
-        <MenuItem onClick={handleClick}>
+        <MenuItem onClick={() => { handleClick('rubia'); }}>
           <ListItemIcon>
           <Loger className="icon"/>
           </ListItemIcon>
           <Typography variant="inherit">Cervezas rubias</Typography>
         </MenuItem>
-        <MenuItem onClick={handleClick}>
+        <MenuItem onClick={() => { handleClick('negra'); }}>
           <ListItemIcon>
           <Loger className="icon"/>
           </ListItemIcon>

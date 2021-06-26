@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import img from '../productGrid/botella.jpg';
-import { useState } from 'react';
 import Counter from '../counter';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,14 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ComplexGrid({items}) {
   const classes = useStyles();
-  const [unity, setUnity] = useState(0);
-
-  function sumarCantidad(){
-    setUnity(unity + 1) 
-  }
-  function restarCantidad(){
-    setUnity(unity - 1) 
-  }
 
   return (
     items.map(items =>(
@@ -65,9 +56,10 @@ export default function ComplexGrid({items}) {
           </Grid>
           
         </Grid>
-        <Counter />
+        <Counter 
+        stock={items.stock}
+        />
       </Paper>
-     
     </div>
     ))
   );
