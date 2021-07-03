@@ -22,6 +22,13 @@
   width: 300px;
   padding-top: 20px;
 }
+.detailContainer {
+  max-width: 345px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding-top: 30px;
+}
 .title{
   font-family: cursive;
     font-size: 23px;

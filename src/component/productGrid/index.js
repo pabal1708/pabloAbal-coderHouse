@@ -6,6 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import img from '../productGrid/botella.jpg';
 import Counter from '../counter';
+import { Link } from 'react-router-dom';
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,16 +34,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ComplexGrid({items}) {
   const classes = useStyles();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+
+
+
 
   return (
     items.map(items =>(
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
-          <Grid item>
+          <Grid item><Link  className='Link' to={`/details/${items.name}`}>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="complex" src={img} />
             </ButtonBase>
+            </Link>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
