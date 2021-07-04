@@ -25,17 +25,18 @@ export default function ItemDetail() {
 
     const [items, setItems] = useState([]);
 
+
     const classes = useStyles();
     let { id } = useParams();
-    console.log(id);
-    console.log('pepe');
-    
+
     useEffect((id) => {
         fetch('https://mocki.io/v1/03b9d11b-8526-4000-a75d-0006b385371c')
     .then((response) => response.json())
     .then(data => setItems(data))
     }, [])
-
+console.log(items.filter(element =>(element.name === id)));
+const filterItem = items.filter(element =>(element.name === id)[0]);
+console.log(filterItem);
     return (
         <div>
         <div className="detailContainer">
@@ -53,17 +54,20 @@ export default function ItemDetail() {
                 {element.descripcion}
             </Typography>
             </CardContent>
-    
         <CardActions>
         </CardActions>
         </Card> ))}
         </div>
-        <div>
-        <Link className='Link' to='/'>
-        <Button variant="contained" color="primary">
+        <div className="backButton">
+        {items.filter(element =>(element.name === id)).map(element =>(
+        <Link className='Link' to={{
+    pathname: `/items/${element.tipo}`,
+        }}>
+        <Button variant="contained" color="primary" >
             VOLVER
             </Button>
             </Link>
+        ))}
         </div>
         </div>
     );

@@ -29,6 +29,10 @@
     margin: auto;
     padding-top: 30px;
 }
+
+.backButton {
+  padding-top: 20px;
+}
 .title{
   font-family: cursive;
     font-size: 23px;

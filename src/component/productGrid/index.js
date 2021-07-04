@@ -6,7 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import img from '../productGrid/botella.jpg';
 import Counter from '../counter';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 
 
@@ -32,15 +34,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ComplexGrid({items}) {
+export default function ComplexGrid() {
+
+  const [ items, setItems] = useState([]);
+  let { section } = useParams();
+  console.log(section);
+
+
+  useEffect(() => {
+    fetch('https://mocki.io/v1/f1a81799-29c2-4451-9978-67463d4f47bb')
+    .then((response) => response.json())
+    .then(data => setItems(data))
+    },[]);
+
+    console.log(items);
   const classes = useStyles();
   // eslint-disable-next-line react-hooks/rules-of-hooks
 
-
-
-
   return (
-    items.map(items =>(
+    items.filter(element => (element.tipo === section)).map(items =>(
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
