@@ -22,7 +22,7 @@ function index() {
     return (
 
 <div className="menu-container">
-    <Paper className="pepito">
+    <Paper className="paper">
       <MenuList>
         {sections.map(element => (
         <MenuItem >
@@ -30,7 +30,7 @@ function index() {
           <ListItemIcon>
           <Loger className="icon"/>
           </ListItemIcon>
-          <Link  to={`/items/${element.tipo}`}>
+          <Link className="link" to={`/items/${element.tipo}`}>
           <Typography variant="inherit">{element.name}
           </Typography>
           </Link>

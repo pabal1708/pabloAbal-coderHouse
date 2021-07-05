@@ -9,7 +9,9 @@
   width: 100%;
 }
 .logocerve{
-  padding-left: 490px;
+  display: flex;
+  margin: auto;
+  width: 200px;
 }
 .containerGral{
   display: inline-flex;
@@ -48,7 +50,8 @@
 }
 
 .MuiAppBar-colorPrimary{
-  background-color: #b57b3f !important; 
+background: rgb(142,109,21);
+background: linear-gradient(90deg, rgba(142,109,21,1) 0%, rgba(218,171,6,1) 19%, rgba(121,79,9,0.9206057422969187) 47%, rgba(171,142,67,1) 54%, rgba(214,167,73,1) 78%, rgba(215,147,10,1) 90%); 
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -69,6 +72,12 @@
 
 .App-link {
   color: #61dafb;
+}
+.link {
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+  text-shadow: 7px 3px 5px grey;
 }
 
 @keyframes App-logo-spin {
