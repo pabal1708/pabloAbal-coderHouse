@@ -4,7 +4,7 @@ import CartWidget from '../CartWidget'
 import SideBar from '../SideBar'
 
 
-export default function index() {
+export default function Home() {
     return (
         <div className="containerGral">
             <SideBar />
