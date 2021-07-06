@@ -4,8 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import img from '../productGrid/botella.jpg';
-import Counter from '../counter';
+import img from '../../asset/botella.jpg';
+import Counter from '../Counter';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
@@ -38,7 +38,7 @@ export default function ComplexGrid() {
 
   const [ items, setItems] = useState([]);
   let { section } = useParams();
-  console.log(section);
+
 
 
   useEffect(() => {
@@ -47,7 +47,6 @@ export default function ComplexGrid() {
     .then(data => setItems(data))
     },[]);
 
-    console.log(items);
   const classes = useStyles();
   // eslint-disable-next-line react-hooks/rules-of-hooks
 

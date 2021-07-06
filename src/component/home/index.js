@@ -1,19 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react'
-import Home from '../cartWidget'
-import SideBar from '../sideBar'
+import CartWidget from '../CartWidget'
+import SideBar from '../SideBar'
 
 
 export default function index() {
-    
-
     return (
-<div className="containerGral">
-      <SideBar />
-                <Home
-      title={"Bienvenidos a CervezApp"} 
-      parrafo={"Navega nuestro menu de exclusivas cervezas"} 
-        />   
-</div>
+        <div className="containerGral">
+            <SideBar />
+                <CartWidget
+                title={"Bienvenidos a CervezApp"} 
+                parrafo={"Navega nuestro menu de exclusivas cervezas"} />   
+        </div>
     )
 }

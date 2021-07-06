@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Logo from '../productGrid/cervicha.jpg';
+import Logo from '../../asset/cervicha.jpg';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
@@ -24,8 +24,6 @@ const useStyles = makeStyles({
 export default function ItemDetail() {
 
     const [items, setItems] = useState([]);
-
-
     const classes = useStyles();
     let { id } = useParams();
 
@@ -34,9 +32,7 @@ export default function ItemDetail() {
     .then((response) => response.json())
     .then(data => setItems(data))
     }, [])
-console.log(items.filter(element =>(element.name === id)));
-const filterItem = items.filter(element =>(element.name === id)[0]);
-console.log(filterItem);
+
     return (
         <div>
         <div className="detailContainer">

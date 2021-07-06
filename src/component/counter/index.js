@@ -33,14 +33,12 @@ export default function  Counter ({ stock }) {
             setUnity(unity + 1) 
         }
     }
-            
-    
+
     function restarCantidad(){
         if (unity > 0) {
             setUnity(unity - 1) 
         }
     }
-
     return ( 
         <div>
             <p>Unidades: {unity} Stock: {stock}</p>

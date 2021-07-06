@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-export default function FixedContainer({title, parrafo}) {
+export default function CartWidget({title, parrafo}) {
   return (
     <div className="content-container">
       <div className="title"><h1>{title}</h1>

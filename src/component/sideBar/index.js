@@ -19,28 +19,26 @@ function index() {
       .then(data => setSections(data))
       },[]);
 
-    return (
-
-<div className="menu-container">
-    <Paper className="paper">
-      <MenuList>
-        {sections.map(element => (
-        <MenuItem >
-        
-          <ListItemIcon>
-          <Loger className="icon"/>
-          </ListItemIcon>
-          <Link className="link" to={`/items/${element.tipo}`}>
-          <Typography variant="inherit">{element.name}
-          </Typography>
-          </Link>
-        </MenuItem>
-        ))}
-      </MenuList>
-    </Paper>
-  </div>
-
-    )
+  return (
+    <div className="menu-container">
+        <Paper className="paper">
+          <MenuList>
+            {sections.map(element => (
+            <MenuItem >
+            
+              <ListItemIcon>
+              <Loger className="icon"/>
+              </ListItemIcon>
+              <Link className="link" to={`/items/${element.tipo}`}>
+              <Typography variant="inherit">{element.name}
+              </Typography>
+              </Link>
+            </MenuItem>
+            ))}
+          </MenuList>
+        </Paper>
+      </div>
+  )
 }
 
 export default index
