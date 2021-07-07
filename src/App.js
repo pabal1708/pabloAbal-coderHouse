@@ -10,17 +10,17 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
 
-  return (
+return (
 <Router>
-    <div className="App">
-      <header className="App-header" />
-        <Appbar />
-          <Switch>
-              <Route path='/' exact component={Home} /> 
-              <Route path='/items/:section' component={ItemContainer} />
-              <Route path='/details/:id' component={Detail} />
-            </Switch>
-    </div>
+      <div className="App">
+        <header className="App-header" />
+          <Appbar />
+            <Switch>
+                <Route path='/' exact component={Home} /> 
+                <Route path='/items/:section' component={ItemContainer} />
+                <Route path='/details/:id' component={Detail} />
+              </Switch>
+      </div>
   </Router>
   );
 }
