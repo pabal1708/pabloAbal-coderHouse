@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Loger from '../../logo';
 import { Link } from 'react-router-dom';
 
-function index() {
+function SideBar() {
     const [sections, setSections] = useState([]);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
@@ -41,4 +41,4 @@ function index() {
   )
 }
 
-export default index
+export default SideBar

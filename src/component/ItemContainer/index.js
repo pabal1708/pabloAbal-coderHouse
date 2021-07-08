@@ -7,7 +7,7 @@ const React = require('react');
 export default function  HomeContainer (){
   const [ items, setItems] = useState([]);
   let { section } = useParams();
-
+  
   useEffect(() => {
     fetch('https://mocki.io/v1/f1a81799-29c2-4451-9978-67463d4f47bb')
     .then((response) => response.json())
