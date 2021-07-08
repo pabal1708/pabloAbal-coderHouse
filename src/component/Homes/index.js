@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react'
-import CartWidget from '../CartWidget'
-import SideBar from '../SideBar'
+import CartWidget from '../CartsWidget'
+import SideBar from '../SideBars'
 
 
 export default function Home() {

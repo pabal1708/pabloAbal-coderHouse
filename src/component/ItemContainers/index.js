@@ -1,5 +1,5 @@
-import ProductGrid from '../ProductGrid/index';
-import SideBar from '../SideBar';
+import ProductGrid from '../ProductGrids/index';
+import SideBar from '../SideBars';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 const React = require('react');
