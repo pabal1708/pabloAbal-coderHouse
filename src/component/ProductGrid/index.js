@@ -8,10 +8,6 @@ import img from '../../asset/botella.jpg';
 import Counter from '../Counter';
 import { Link } from 'react-router-dom';
 
-
-
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -59,7 +55,6 @@ export default function ProductGrid({ items }) {
               <Typography variant="subtitle1">{items.valor}</Typography>
             </Grid>
           </Grid>
-          
         </Grid>
         <Counter 
         stock={items.stock}
