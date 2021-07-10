@@ -74,7 +74,7 @@ export default function ItemDetail() {
             ))}
         </div>
             {isAdded &&( <div className="buyButton">
-                <Link className='Link' to={{ pathname: `/cart/}`,
+                <Link className='Link' to={{ pathname: `/cart/`,
                 }}>
                 <Button variant="contained" color="primary" >
                     FINALIZAR COMPRA
