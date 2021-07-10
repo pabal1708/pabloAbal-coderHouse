@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import LogoCervezApp from '../../asset/Cervezapp.png';
-
-
+import CartHeader from '../CartHeader';
 
 const useStyles = makeStyles((theme) => ({
 root: {
@@ -26,6 +25,7 @@ return (
     <AppBar position="static">
     <Toolbar>
     <img className="logocerve" alt="complex" src={LogoCervezApp} />
+    <CartHeader />
     </Toolbar>
     </AppBar>
 </div>

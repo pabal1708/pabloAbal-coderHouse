@@ -28,11 +28,11 @@ export default function ItemDetail() {
     const [items, setItems] = useState([]);
     const classes = useStyles();
     let { id } = useParams();
-    const {cart, addToCart} = useCartContext();
+    const {addToCart} = useCartContext();
     const addCart = (item, unity) => addToCart(item, unity);
     const {isAdded}= useCartContext();
 
-    useEffect((id) => {
+    useEffect(() => {
         fetch('https://mocki.io/v1/03b9d11b-8526-4000-a75d-0006b385371c')
     .then((response) => response.json())
     .then(data => setItems(data))
