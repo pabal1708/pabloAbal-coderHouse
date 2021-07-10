@@ -7,9 +7,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Logo from '../../asset/cervicha.jpg';
+import Counter from '../Counter';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
+import { useCartContext } from '../../context/Context';
 
 
 const useStyles = makeStyles({
@@ -26,6 +28,9 @@ export default function ItemDetail() {
     const [items, setItems] = useState([]);
     const classes = useStyles();
     let { id } = useParams();
+    const {cart, addToCart} = useCartContext();
+    const addCart = (item, unity) => addToCart(item, unity);
+    const {isAdded}= useCartContext();
 
     useEffect((id) => {
         fetch('https://mocki.io/v1/03b9d11b-8526-4000-a75d-0006b385371c')
@@ -52,19 +57,30 @@ export default function ItemDetail() {
             </CardContent>
         <CardActions>
         </CardActions>
+        <Counter 
+        item={element}
+        addCart={addCart}
+        />
         </Card> ))}
         </div>
         <div className="backButton">
-        {items.filter(element =>(element.name === id)).map(element =>(
-        <Link className='Link' to={{
-    pathname: `/items/${element.tipo}`,
-        }}>
-        <Button variant="contained" color="primary" >
-            VOLVER
-            </Button>
-            </Link>
-        ))}
+            {items.filter(element =>(element.name === id)).map(element =>(
+            <Link className='Link' to={{ pathname: `/items/${element.tipo}`,
+            }}>
+            <Button variant="contained" color="primary" >
+                VOLVER
+                </Button>
+                </Link>
+            ))}
         </div>
+            {isAdded &&( <div className="buyButton">
+                <Link className='Link' to={{ pathname: `/cart/}`,
+                }}>
+                <Button variant="contained" color="primary" >
+                    FINALIZAR COMPRA
+                    </Button>
+                    </Link>
+            </div> )}
         </div>
     );
 }

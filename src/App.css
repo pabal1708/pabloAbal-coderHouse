@@ -60,6 +60,10 @@ background: linear-gradient(90deg, rgba(142,109,21,1) 0%, rgba(218,171,6,1) 19%,
   }
 }
 
+.buyButton {
+  margin-top: 10px;
+}
+
 .App-header {
   background-color: #282c34;
   display: flex;

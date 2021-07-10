@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import img from '../../asset/botella.jpg';
-import Counter from '../Counter';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,9 +55,6 @@ export default function ProductGrid({ items }) {
             </Grid>
           </Grid>
         </Grid>
-        <Counter 
-        stock={items.stock}
-        />
       </Paper>
     </div>
   );
