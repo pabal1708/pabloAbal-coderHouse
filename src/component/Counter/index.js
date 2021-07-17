@@ -29,7 +29,7 @@ export default function  Counter ({ item, addCart }) {
     const classes = useStyles();
     const [unity, setUnity] = useState(0);
 
-    function sumarCantidad({}){
+    function sumarCantidad(){
         if (item.stock > unity) {
             setUnity(unity + 1) 
         }
@@ -56,6 +56,5 @@ export default function  Counter ({ item, addCart }) {
         </Button>
         </div>
         </div>
-
     );
 }

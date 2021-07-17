@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useCartContext } from '../../context/Context';
+import { db } from '../../firebase';
 
 
 const useStyles = makeStyles({
@@ -26,22 +27,38 @@ const useStyles = makeStyles({
 export default function ItemDetail() {
 
     const [items, setItems] = useState([]);
+    const [nitems, setnItems] = useState([]);
     const classes = useStyles();
     let { id } = useParams();
     const {addToCart} = useCartContext();
     const addCart = (item, unity) => addToCart(item, unity);
     const {isAdded}= useCartContext();
 
+    console.log(items);
+    console.log(nitems);
+
     useEffect(() => {
         fetch('https://mocki.io/v1/03b9d11b-8526-4000-a75d-0006b385371c')
     .then((response) => response.json())
     .then(data => setItems(data))
+    getProducts();
     }, [])
+
+    const getProducts = () => {
+        const productsFirebase = [];
+        db.collection('products').onSnapshot((querySnapshot) => {
+          querySnapshot.forEach((doc)=>{
+            productsFirebase.push({ ...doc.data() });
+          })
+          })
+          setnItems(productsFirebase);
+          };
+            
 
     return (
         <div>
         <div className="detailContainer">
-            {items.filter(element =>(element.name === id)).map(element =>(
+            {nitems.filter(element =>(element.name === id)).map(element =>(
         <Card className={classes.root}>
             <CardMedia
             className={classes.media}
