@@ -6,12 +6,31 @@ import Paper from '@material-ui/core/Paper';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Typography from '@material-ui/core/Typography';
 import Loger from '../../logo';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCartContext } from '../../context/Context';
+import { db } from '../../firebase';
+
+
 
 function SideBar() {
-    const {newsections} = useCartContext(); 
+    const [newsections, setNewsections] = useState([]);
+
     console.log(newsections);
+
+const getFirebase = () => {
+      const sectionsFirebase = [];
+      db.collection('sections').onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc)=>{
+          sectionsFirebase.push({ ...doc.data()});
+          
+      });
+      setNewsections(sectionsFirebase);
+      });
+    };
+      useEffect(() => {
+          getFirebase();
+      },[])
+
   return (
     <div className="menu-container">
         <Paper className="paper">

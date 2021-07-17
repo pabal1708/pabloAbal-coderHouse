@@ -16,8 +16,8 @@ export default function  HomeContainer (){
     querySnapshot.forEach((doc)=>{
       products.push({ ...doc.data() });
     })
-    })
     setItems(products);
+    })
     },[]);
 
 

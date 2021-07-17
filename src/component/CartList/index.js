@@ -19,7 +19,7 @@ minWidth: 650,
 
 
 export default function CartList() {
-const {cart, clearCart}= useCartContext();
+const {cart, clearCart, removeToCart}= useCartContext();
 const classes = useStyles();
 
 return (
@@ -31,6 +31,7 @@ return (
             <TableCell>Detalle del producto</TableCell>
             <TableCell align="right">Cantidad</TableCell>
             <TableCell align="right">Precio</TableCell>
+            <TableCell align="right"></TableCell>
             </TableRow>
         </TableHead>
         <TableBody>
@@ -42,6 +43,9 @@ return (
                 </TableCell>
                 <TableCell align="right">{element.quantity}</TableCell>
                 <TableCell align="right">{element.valor}</TableCell>
+                <TableCell align="right">
+                    <Button onClick={() => removeToCart(element)}>borrar</Button>
+                </TableCell>
             </TableRow>))}
         </TableBody>
         </Table>

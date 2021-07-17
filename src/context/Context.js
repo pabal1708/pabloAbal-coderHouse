@@ -1,9 +1,9 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { db } from '../firebase';
+import React, { createContext, useState, useContext } from 'react';
+
 
 // 1 - CREAR EL CONTEXTO
 export const ItemsContext = createContext();
-
+// Exporto el contexto a una funcion
 export const useCartContext = () => useContext(ItemsContext);
 
 // crear provider y pasar objeto children
@@ -11,7 +11,6 @@ export const ItemsProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [isAdded, setIsadded] = useState(false);
     const [database] = useState([]);
-    const [newsections, setNewsections] = useState([]);
 
     const clearCart = () => setCart([]);
 
@@ -31,20 +30,15 @@ export const ItemsProvider = ({ children }) => {
         setIsadded(true);
         }
     };
-    const getFirebase = () => {
-        const sectionsFirebase = [];
-        db.collection('sections').onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc)=>{
-            sectionsFirebase.push({ ...doc.data() });
-        })
-        })
-        setNewsections(sectionsFirebase);
-    }
-        useEffect(() => {
-            getFirebase();
-        },[])
+    const removeToCart = (item) => {
+        const cartRemove = [...cart];
+        const itemToRemove = (cartRemove.findIndex(x => x.name === item.name));
+        cartRemove.splice(itemToRemove);
+        setCart(cartRemove);
+            };
+
       // retornar componente de contexto junto con props
-    return <ItemsContext.Provider value={{ cart, setCart, clearCart, addToCart, database, isAdded, newsections }}>
+    return <ItemsContext.Provider value={{ cart, setCart, clearCart, addToCart, database, isAdded, removeToCart }}>
         {children}
     </ItemsContext.Provider>
     }
