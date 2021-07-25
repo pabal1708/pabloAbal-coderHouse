@@ -19,7 +19,7 @@ minWidth: 650,
 
 
 export default function CartList() {
-const {cart, clearCart, removeToCart}= useCartContext();
+const {cart, clearCart, removeToCart, totalValor, totalArticulos}= useCartContext();
 const classes = useStyles();
 
 return (
@@ -37,16 +37,22 @@ return (
         <TableBody>
         {cart.map(element=>(
             <TableRow key="pepe">
-                
                 <TableCell component="th" scope="row">
                 {element.name}
                 </TableCell>
                 <TableCell align="right">{element.quantity}</TableCell>
-                <TableCell align="right">{element.valor}</TableCell>
+                <TableCell align="right">$ {element.valor}</TableCell>
                 <TableCell align="right">
                     <Button onClick={() => removeToCart(element)}>borrar</Button>
                 </TableCell>
             </TableRow>))}
+            <TableRow key="pepe">
+            <TableCell component="th" scope="row">
+                Valor Total
+                </TableCell>
+                <TableCell align="right">{totalArticulos}</TableCell>
+                <TableCell align="right">$ {totalValor}</TableCell>
+            </TableRow>
         </TableBody>
         </Table>
     </TableContainer>
@@ -58,6 +64,13 @@ return (
         <Button variant="contained" color="primary" onClick={clearCart}>
             VACIAR CHANGO
             </Button>
+            <div>
+            <Link className='Link' to={{ pathname: `/checkout`,}}>
+        <Button variant="contained" color="primary" >
+            Ir al checkout
+            </Button>
+        </Link>
+            </div>
 </div>
 );
 }

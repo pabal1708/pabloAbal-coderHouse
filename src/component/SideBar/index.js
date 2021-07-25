@@ -15,8 +15,6 @@ import { db } from '../../firebase';
 function SideBar() {
     const [newsections, setNewsections] = useState([]);
 
-    console.log(newsections);
-
 const getFirebase = () => {
       const sectionsFirebase = [];
       db.collection('sections').onSnapshot((querySnapshot) => {

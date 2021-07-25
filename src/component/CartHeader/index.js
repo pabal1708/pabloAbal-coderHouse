@@ -15,12 +15,13 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
+
 export default function CartHeader() {
-    const {cart} = useCartContext();
+    const {totalArticulos} = useCartContext();
 return (
     <Link to={{pathname: `/cart/`}} >
         <IconButton aria-label="cart">
-        <StyledBadge badgeContent={cart.length} color="secondary">
+        <StyledBadge badgeContent={totalArticulos} color="secondary">
             <ShoppingCartIcon />
         </StyledBadge>
         </IconButton>

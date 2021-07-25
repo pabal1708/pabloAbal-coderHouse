@@ -20,7 +20,7 @@ export const ItemsProvider = ({ children }) => {
         if (isInCart(item.name)){
             const newCart = cart.map(cartElement => {
                 if (cartElement.id === item.id) {
-                return { ...cartElement, quantity: cartElement.quantity + quantity }
+                return { ...cartElement, quantity: (cartElement.quantity + quantity) > cartElement.stock ? cartElement.stock : cartElement.quantity + quantity }
                 } else return cartElement;
             })
             setCart(newCart);
@@ -36,9 +36,13 @@ export const ItemsProvider = ({ children }) => {
         cartRemove.splice(itemToRemove);
         setCart(cartRemove);
             };
+        const cantidadCart = cart.map(element =>(element.quantity));
+        const totalArticulos = cantidadCart.reduce((prev, next) => prev + next,0);
+        const precioCart = cart.map(element =>(element.valor * element.quantity)); 
+        const totalValor = precioCart.reduce((prev, next) => prev + next,0);
 
       // retornar componente de contexto junto con props
-    return <ItemsContext.Provider value={{ cart, setCart, clearCart, addToCart, database, isAdded, removeToCart }}>
+    return <ItemsContext.Provider value={{ cart, setCart, clearCart, addToCart, database, isAdded, removeToCart, totalArticulos, totalValor }}>
         {children}
     </ItemsContext.Provider>
     }

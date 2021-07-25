@@ -44,7 +44,6 @@ export default function ItemDetail() {
             setnItems(productsFirebase);
             })
             };
-            
 
     return (
         <div>

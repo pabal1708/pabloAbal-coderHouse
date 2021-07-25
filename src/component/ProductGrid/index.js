@@ -52,7 +52,7 @@ export default function ProductGrid({ items }) {
               </Grid>
             </Grid>
             <Grid item>
-              <Typography><h3>{items.valor}</h3></Typography>
+              <Typography><h3>$ {items.valor}</h3></Typography>
             </Grid>
           </Grid>
         </Grid>
