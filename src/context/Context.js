@@ -12,6 +12,7 @@ export const ItemsProvider = ({ children }) => {
     const [isAdded, setIsadded] = useState(false);
     const [database] = useState([]);
 
+
     const clearCart = () => setCart([]);
 
     const isInCart = name => cart.some(item => item.name === name);
@@ -30,6 +31,7 @@ export const ItemsProvider = ({ children }) => {
         setIsadded(true);
         }
     };
+
     const removeToCart = (item) => {
         const cartRemove = [...cart];
         const itemToRemove = (cartRemove.findIndex(x => x.name === item.name));

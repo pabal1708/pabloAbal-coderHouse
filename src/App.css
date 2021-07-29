@@ -32,6 +32,11 @@
     padding-top: 30px;
 }
 
+.alert {
+  background: red;
+    color: white;
+}
+
 .backButton {
   padding-top: 20px;
 }

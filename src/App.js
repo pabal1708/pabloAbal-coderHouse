@@ -5,7 +5,7 @@ import ItemContainer from './component/ItemContainer/index';
 import Detail from './component/ItemsDetail/index';
 import Home from './component/Home';
 import CartList from './component/CartList/index';
-import Checkout from './component/Checkout/index';
+import Checkout from './component/SuccessOrder/index';
 
 // REACT-ROUTER-DOM
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';

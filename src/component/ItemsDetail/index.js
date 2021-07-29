@@ -33,22 +33,27 @@ export default function ItemDetail() {
     const addCart = (item, unity) => addToCart(item, unity);
 
     useEffect(() => {
-    getProducts();
+    getProductsFilter(id);
     }, [])
-    const getProducts = () => {
-        const productsFirebase = [];
-        db.collection('products').onSnapshot((querySnapshot) => {
-            querySnapshot.forEach((doc)=>{
-            productsFirebase.push({ ...doc.data() });
-            })
-            setnItems(productsFirebase);
-            })
-            };
+            const getProductsFilter = (id) => {
+                db.collection('products')
+                .where('name', '==', id)
+                    .get()
+                    .then(function (querySnapshot) {
+                        const docs = [];
+                        querySnapshot.forEach(function (doc) {
+                            // doc.data() is never undefined for query doc snapshots
+                            docs.push({ ...doc.data(), id: doc.id });
+                            setnItems(docs);
+                        });
+                    });
+                };
+                
 
     return (
         <div>
         <div className="detailContainer">
-            {nitems.filter(element =>(element.name === id)).map(element =>(
+            {nitems.map(element =>(
         <Card className={classes.root}>
             <CardMedia
             className={classes.media}
