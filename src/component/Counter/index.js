@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react'; 
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -24,12 +25,12 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
   
-export default function  Counter ({ stock }) {
+export default function  Counter ({ item, addCart }) {
     const classes = useStyles();
     const [unity, setUnity] = useState(0);
 
-    function sumarCantidad(){
-        if (stock > unity) {
+    function sumarCantidad({}){
+        if (item.stock > unity) {
             setUnity(unity + 1) 
         }
     }
@@ -39,15 +40,22 @@ export default function  Counter ({ stock }) {
             setUnity(unity - 1) 
         }
     }
+
     return ( 
         <div>
-            <p>Unidades: {unity} Stock: {stock}</p>
+            <p>Unidades: {unity} Stock: {item.stock}</p>
             <Button onClick={restarCantidad} variant="outlined" size="small" className={classes.margin}>
         -
         </Button>
-        <Button onClick={(sumarCantidad)} variant="outlined" size="small" className={classes.margin}>
+        <Button onClick={sumarCantidad} variant="outlined" size="small" className={classes.margin}>
         +
         </Button>
+        <div>
+        <Button onClick={() => addCart(item, unity)} variant="outlined" size="small" className={classes.margin}>
+        AGREGAR
+        </Button>
         </div>
+        </div>
+
     );
 }
