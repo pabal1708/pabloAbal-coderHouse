@@ -1,7 +1,9 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import Alert from '../SnackBar/index';
 import { makeStyles } from '@material-ui/core/styles';
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react'; 
+import { useCartContext } from '../../context/Context';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,8 +30,12 @@ const useStyles = makeStyles((theme) => ({
 export default function  Counter ({ item, addCart }) {
     const classes = useStyles();
     const [unity, setUnity] = useState(0);
+    const { error } = useCartContext();
 
-    function sumarCantidad({}){
+    console.log(error);
+ 
+
+    function sumarCantidad(item){
         if (item.stock > unity) {
             setUnity(unity + 1) 
         }
@@ -42,12 +48,13 @@ export default function  Counter ({ item, addCart }) {
     }
 
     return ( 
+      <div>
         <div>
             <p>Unidades: {unity} Stock: {item.stock}</p>
             <Button onClick={restarCantidad} variant="outlined" size="small" className={classes.margin}>
         -
         </Button>
-        <Button onClick={sumarCantidad} variant="outlined" size="small" className={classes.margin}>
+        <Button onClick={() => sumarCantidad(item)} variant="outlined" size="small" className={classes.margin}>
         +
         </Button>
         <div>
@@ -56,6 +63,6 @@ export default function  Counter ({ item, addCart }) {
         </Button>
         </div>
         </div>
-
+        </div>
     );
 }

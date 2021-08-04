@@ -2,6 +2,8 @@ import ProductGrid from '../ProductGrid/index';
 import SideBar from '../SideBar';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { db } from '../../firebase';
+
 const React = require('react');
 
 export default function  HomeContainer (){
@@ -9,10 +11,15 @@ export default function  HomeContainer (){
   let { section } = useParams();
   
   useEffect(() => {
-    fetch('https://mocki.io/v1/f1a81799-29c2-4451-9978-67463d4f47bb')
-    .then((response) => response.json())
-    .then(data => setItems(data))
+    const products = [];
+    db.collection('products').onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((doc)=>{
+      products.push({ ...doc.data() });
+    })
+    setItems(products);
+    })
     },[]);
+
 
     return (
       <div className="containerGral">

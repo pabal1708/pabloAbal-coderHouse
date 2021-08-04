@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useCartContext } from '../../context/Context';
+import { db } from '../../firebase';
 
 
 const useStyles = makeStyles({
@@ -25,23 +26,29 @@ const useStyles = makeStyles({
 
 export default function ItemDetail() {
 
-    const [items, setItems] = useState([]);
+    const [nitems, setnItems] = useState([]);
     const classes = useStyles();
     let { id } = useParams();
-    const {cart, addToCart} = useCartContext();
+    const {addToCart, isAdded} = useCartContext();
     const addCart = (item, unity) => addToCart(item, unity);
-    const {isAdded}= useCartContext();
 
-    useEffect((id) => {
-        fetch('https://mocki.io/v1/03b9d11b-8526-4000-a75d-0006b385371c')
-    .then((response) => response.json())
-    .then(data => setItems(data))
+    useEffect(() => {
+    getProducts();
     }, [])
+    const getProducts = () => {
+        const productsFirebase = [];
+        db.collection('products').onSnapshot((querySnapshot) => {
+            querySnapshot.forEach((doc)=>{
+            productsFirebase.push({ ...doc.data() });
+            })
+            setnItems(productsFirebase);
+            })
+            };
 
     return (
         <div>
         <div className="detailContainer">
-            {items.filter(element =>(element.name === id)).map(element =>(
+            {nitems.filter(element =>(element.name === id)).map(element =>(
         <Card className={classes.root}>
             <CardMedia
             className={classes.media}
@@ -64,7 +71,7 @@ export default function ItemDetail() {
         </Card> ))}
         </div>
         <div className="backButton">
-            {items.filter(element =>(element.name === id)).map(element =>(
+            {nitems.filter(element =>(element.name === id)).map(element =>(
             <Link className='Link' to={{ pathname: `/items/${element.tipo}`,
             }}>
             <Button variant="contained" color="primary" >
