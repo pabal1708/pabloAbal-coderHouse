@@ -11,20 +11,26 @@ export default function  HomeContainer (){
   let { section } = useParams();
   
   useEffect(() => {
-    const products = [];
-    db.collection('products').onSnapshot((querySnapshot) => {
-    querySnapshot.forEach((doc)=>{
-      products.push({ ...doc.data() });
-    })
-    setItems(products);
-    })
+    getProductsFilter(section);
     },[]);
 
-
+    const getProductsFilter = (section) => {
+      db.collection('products')
+      .where('tipo', '==', section)
+          .get()
+          .then(function (querySnapshot) {
+              const docs = [];
+              querySnapshot.forEach(function (doc) {
+                  // doc.data() is never undefined for query doc snapshots
+                  docs.push({ ...doc.data(), id: doc.id });
+                  setItems(docs);
+              });
+          });
+      };
     return (
       <div className="containerGral">
         <SideBar />
-        {items.filter(element => (element.tipo === section)).map(items =>(
+        {items.map(items =>(
         <ProductGrid items={items} /> 
         ))}
       </div>

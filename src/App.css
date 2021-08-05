@@ -32,6 +32,12 @@
     padding-top: 30px;
 }
 
+.alert {
+  background: red;
+    color: white;
+}
+
+
 .button-box {
   padding-top: 10px;
   margin-left: auto;
@@ -43,6 +49,7 @@
 .button-card {
   padding-top: 10px;
 }
+
 .backButton {
   padding-top: 20px;
 }

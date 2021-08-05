@@ -14,6 +14,7 @@ export const ItemsProvider = ({ children }) => {
   
 
 
+
     const clearCart = () => setCart([]);
 
     const isInCart = name => cart.some(item => item.name === name);
