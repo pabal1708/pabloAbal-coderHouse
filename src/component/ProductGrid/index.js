@@ -7,6 +7,8 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import img from '../../asset/botella.jpg';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import Counter from '../Counter/index';
+import { useCartContext } from '../../context/Context';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     margin: 10,
-    maxWidth: 500,
+    maxWidth: 300,
   },
   image: {
-    width: 110,
-    height: 210,
+    width: 60,
+    height: 110,
   },
   img: {
     margin: 'auto',
@@ -31,6 +33,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProductGrid({ items }) {
   const classes = useStyles();
+  const {addToCart, isAdded} = useCartContext();
+  const addCart = (item, unity) => addToCart(item, unity);
   // eslint-disable-next-line react-hooks/rules-of-hooks
 
   return (
@@ -56,11 +60,17 @@ export default function ProductGrid({ items }) {
             </Grid>
           </Grid>
         </Grid>
+          <Counter 
+          item={items}
+          addCart={addCart}
+          />
+          <div className="button-card">
         <Link className='Link' to={{ pathname: `/details/${items.name}`}}>
-          <Button variant="contained" color="primary" >
+          <Button className='button-card' variant="contained" color="primary" >
               Detalle
             </Button>
         </Link>
+        </div>
       </Paper>
     </div>
   );

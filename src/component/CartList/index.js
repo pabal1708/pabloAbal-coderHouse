@@ -56,6 +56,7 @@ return (
         </TableBody>
         </Table>
     </TableContainer>
+    <div className="button-box">
     <Link className='Link' to={{ pathname: `/`,}}>
         <Button variant="contained" color="primary" >
             VOLVER
@@ -70,6 +71,7 @@ return (
             Ir al checkout
             </Button>
         </Link>
+        </div>
             </div>
 </div>
 );
