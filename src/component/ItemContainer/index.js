@@ -9,7 +9,8 @@ const React = require('react');
 export default function  HomeContainer (){
   const [ items, setItems] = useState([]);
   let { section } = useParams();
-  
+  console.log(items);
+  console.log(section);
   useEffect(() => {
     getProductsFilter(section);
     },[]);
@@ -24,6 +25,7 @@ export default function  HomeContainer (){
                   // doc.data() is never undefined for query doc snapshots
                   docs.push({ ...doc.data(), id: doc.id });
                   setItems(docs);
+                  console.log(docs);
               });
           });
       };

@@ -20,9 +20,8 @@ const getFirebase = () => {
       db.collection('sections').onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc)=>{
           sectionsFirebase.push({ ...doc.data()});
-          
+          setNewsections(sectionsFirebase);
       });
-      setNewsections(sectionsFirebase);
       });
     };
       useEffect(() => {
