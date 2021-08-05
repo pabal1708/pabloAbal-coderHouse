@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useCartContext } from '../../context/Context';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -18,7 +19,9 @@ const StyledBadge = withStyles((theme) => ({
 
 export default function CartHeader() {
     const {totalArticulos} = useCartContext();
+    const showOrNotIcon = totalArticulos === 0;
 return (
+  !showOrNotIcon && (
     <Link to={{pathname: `/cart/`}} >
         <IconButton aria-label="cart">
         <StyledBadge badgeContent={totalArticulos} color="secondary">
@@ -26,5 +29,6 @@ return (
         </StyledBadge>
         </IconButton>
     </Link>
+    )
 );
 }
