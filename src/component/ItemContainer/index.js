@@ -9,11 +9,6 @@ const React = require('react');
 export default function  HomeContainer (){
   const [ items, setItems] = useState([]);
   let { section } = useParams();
-  console.log(items);
-  console.log(section);
-  useEffect(() => {
-    getProductsFilter(section);
-    },[]);
 
     const getProductsFilter = (section) => {
       db.collection('products')
@@ -24,11 +19,13 @@ export default function  HomeContainer (){
               querySnapshot.forEach(function (doc) {
                   // doc.data() is never undefined for query doc snapshots
                   docs.push({ ...doc.data(), id: doc.id });
-                  setItems(docs);
-                  console.log(docs);
               });
+              setItems(docs);
           });
       };
+      useEffect(() => {
+        getProductsFilter(section);
+        },[section]);
     return (
       <div className="containerGral">
         <SideBar />

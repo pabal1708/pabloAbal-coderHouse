@@ -10,8 +10,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../../firebase';
 
-
-
 function SideBar() {
     const [newsections, setNewsections] = useState([]);
 
@@ -20,8 +18,8 @@ const getFirebase = () => {
       db.collection('sections').onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc)=>{
           sectionsFirebase.push({ ...doc.data()});
-          setNewsections(sectionsFirebase);
       });
+      setNewsections(sectionsFirebase);
       });
     };
       useEffect(() => {

@@ -11,9 +11,6 @@ export const ItemsProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [isAdded, setIsadded] = useState(false);
     const [database] = useState([]);
-  
-
-
 
     const clearCart = () => setCart([]);
 

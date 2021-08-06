@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useState } from 'react';
+import { useCartContext } from '../../context/Context';
 
     const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,6 +16,7 @@ import { useState } from 'react';
 
     export default function Checkout({ addProduct }) {
     const classes = useStyles();
+    const{ clearCart } = useCartContext();
 
         const initialState = {
             name: '',
@@ -38,6 +40,7 @@ import { useState } from 'react';
             console.log(values);
             addProduct(values); // Envia al componente Products los valores de los values
             setValues({ ...initialState }); // Resetear campos de formulario
+            clearCart();
         };
     
 

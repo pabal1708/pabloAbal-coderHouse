@@ -17,6 +17,7 @@ const styles = {
 const SuccesOrder = () => {
 	const [order, setOrder] = useState([]);
     const [userId, setUserId] = useState("0");
+	const orderTrue = order > "0";
 
 	 console.log('Mi Estado', order, userId);
 
@@ -45,13 +46,13 @@ const SuccesOrder = () => {
 	// Al poner el array vacio se va a ejecutar la primera vez que cargue el componente
 	useEffect(() => {
         getProductWhere(userId);
-	}, []);
+	}, [userId]);
 
 	return (
 		<div>
 			<h1>Pedido</h1>
 			<Checkout addProduct={ addProduct } />
-            <p>Tienes los siguientes pedidos: </p>
+            {orderTrue && (<p>Tienes los siguientes pedidos: </p> )}
             {order.map(order => (
 				<div key={order.id} style={styles.cardStyles}>
                     <p>{order.id}</p>

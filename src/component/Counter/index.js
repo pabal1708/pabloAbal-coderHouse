@@ -31,22 +31,31 @@ export default function  Counter ({ item, addCart }) {
     const classes = useStyles();
     const [unity, setUnity] = useState(0);
     const { cart } = useCartContext();
-    const [pepe, setPepe] = useState();
+    const [stockAgregado, setStockAgregado] = useState();
     const [alert, setAlert] = useState(false);
+
 
     useEffect(() => {
       stockViewer(cart, item);
-      isAlert(pepe, item);
-    })
+      isAlert(stockAgregado, item);
+    },[cart])
     
-    function isAlert(pepe, item) {
-      if (pepe === item.stock) {
+    function isAlert(stockAgregado, item) {
+      if (stockAgregado === item.stock) {
         setAlert(true);
       }
+      setTimeout(() => {
+        setAlert(false);
+      }, 10000);
+    }
+
+    function buy(item, unity){
+      addCart(item, unity);
+      setUnity(0);
     }
 
     function stockViewer(cart, item){
-      cart.filter(element => (element.name === item.name)).map(x => (setPepe(x.quantity)));
+      cart.filter(element => (element.name === item.name)).map(x => (setStockAgregado(x.quantity)));
     }
 
     function sumarCantidad(item){
@@ -75,7 +84,7 @@ export default function  Counter ({ item, addCart }) {
         +
         </Button>
         <div>
-        <Button onClick={() => addCart(item, unity)} variant="outlined" size="small" className={classes.margin}>
+        <Button onClick={() => buy(item, unity)} variant="outlined" size="small" className={classes.margin}>
         AGREGAR
         </Button>
         </div>

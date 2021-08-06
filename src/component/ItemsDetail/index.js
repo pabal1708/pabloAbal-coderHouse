@@ -34,7 +34,7 @@ export default function ItemDetail() {
 
     useEffect(() => {
     getProductsFilter(id);
-    }, [])
+    }, [id])
             const getProductsFilter = (id) => {
                 db.collection('products')
                 .where('name', '==', id)
