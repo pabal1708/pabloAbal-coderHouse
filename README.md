@@ -21,6 +21,6 @@ Se trata de un sitio, dinamico, es decir que mediante la integracion de firebase
 
 ## Librerias 
 
-https://material-ui.com/ 
-Firebase 
-https://reactrouter.com/ 
+- https://material-ui.com/ 
+- Firebase 
+- https://reactrouter.com/ 
