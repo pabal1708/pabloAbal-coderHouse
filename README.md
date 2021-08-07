@@ -19,3 +19,8 @@ Se trata de un sitio, dinamico, es decir que mediante la integracion de firebase
 - Limitador de stock, no puede seleccionarse mas stock del disponible, ni agregarse al cart.
 - Checkout genera el pedido y devuelve al usuario el o los ids de pedidos bajo su DNI.
 
+## Librerias 
+
+https://material-ui.com/ 
+Firebase 
+https://reactrouter.com/ 
